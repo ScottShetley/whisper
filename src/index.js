@@ -7,20 +7,35 @@ import Header from "./components/header";
 import Shop from "./components/shop";
 import Cart from "./components/cart";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import { secrets } from "./components/secretslist";
+
+const initialstate = {
+  secrets: secrets
+};
+
+const reducer = (state = initialstate, action) => {
+  return state;
+};
+
+const store = createStore(reducer);
 
 const App = props => (
-  <Router>
-    <div className="text-center">
-      <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
-        <Header />
-        <main className="inner cover mainSection">
-          <Route exact path="/" component={Home} />
-          <Route path="/secrets" component={Shop} />
-          <Route path="/cart" component={Cart} />
-        </main>
+  <Provider store={store}>
+    <Router>
+      <div className="text-center">
+        <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
+          <Header />
+          <main className="inner cover mainSection">
+            <Route exact path="/" component={Home} />
+            <Route path="/secrets" component={Shop} />
+            <Route path="/cart" component={Cart} />
+          </main>
+        </div>
       </div>
-    </div>
-  </Router>
+    </Router>
+  </Provider>
 );
 
 ReactDOM.render(<App />, document.getElementById("root"));
