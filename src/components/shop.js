@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { AddToCart } from "../actions/actions";
 
 const mapStateToProps = state => {
   return {
@@ -7,18 +8,30 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddToCart: secret => dispatch(AddToCart(secret))
+  };
+};
+
 const Shop = props => (
   <div>
     <h1 className="cover-heading">Secrets...........</h1>
-    <ul>
-      {props.secrets.map(s => (
-        <li key={s.id}>
-          {s.title}
-          <button className="btn btn-default">${s.price}</button>
-        </li>
-      ))}
-    </ul>
+    {props.secrets.map(s => (
+      <div className="row d-flex justify-content-between" key={s.id}>
+        {s.title}
+        <button
+          className="btn btn-default"
+          onClick={() => props.onAddToCart(s)}
+        >
+          ${s.price}
+        </button>
+      </div>
+    ))}
   </div>
 );
 
-export default connect(mapStateToProps)(Shop);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Shop);

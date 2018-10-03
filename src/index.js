@@ -12,11 +12,19 @@ import { createStore } from "redux";
 import { secrets } from "./components/secretslist";
 
 const initialstate = {
-  secrets: secrets
+  secrets: secrets,
+  cart: []
 };
 
 const reducer = (state = initialstate, action) => {
-  return state;
+  switch (action.type) {
+    case "AddToCart":
+      console.log(action.item);
+      console.log(state.cart);
+      return { ...state, cart: [...state.cart, action.item] };
+    default:
+      return state;
+  }
 };
 
 const store = createStore(reducer);
