@@ -1,20 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = props => (
   <header className="masthead">
     <div className="inner">
       <h3 className="masthead-brand">Whisper</h3>
       <nav className="nav nav-masthead justify-content-center">
-        <Link className="nav-link" to="/">
+        <NavLink exact activeClassName="active" className="nav-link" to="/">
           Home
-        </Link>
-        <Link className="nav-link" to="/secrets">
+        </NavLink>
+        <NavLink activeClassName="active" className="nav-link" to="/secrets">
           Secrets
-        </Link>
-        <Link className="nav-link" to="/cart">
+        </NavLink>
+        <NavLink activeClassName="active" className="nav-link" to="/cart">
           Cart
-        </Link>
+        </NavLink>
       </nav>
     </div>
   </header>

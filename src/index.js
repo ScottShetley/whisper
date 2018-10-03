@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 const App = props => (
   <Router>
     <div className="text-center">
-      <div className="cover-container d-flex h-100 p-3 mx-auto flex-colomn">
+      <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
         <Header />
         <main className="inner cover mainSection">
           <Route exact path="/" component={Home} />
