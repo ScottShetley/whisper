@@ -6,6 +6,7 @@ import Home from "./components/home";
 import Header from "./components/header";
 import Shop from "./components/shop";
 import Cart from "./components/cart";
+import Create from "./components/create";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
@@ -31,7 +32,17 @@ const reducer = (state = initialstate, action) => {
         ...state,
         cart: [...state.cart.filter(cart => cart.cartId !== action.id)]
       };
-
+    case "CreateSecret":
+      return {
+        ...state,
+        secrets: [
+          ...state.secrets,
+          {
+            title: action.title,
+            price: action.price
+          }
+        ]
+      };
     default:
       return state;
   }
@@ -49,6 +60,7 @@ const App = props => (
             <Route exact path="/" component={Home} />
             <Route path="/secrets" component={Shop} />
             <Route path="/cart" component={Cart} />
+            <Route path="/create" component={Create} />
           </main>
         </div>
       </div>

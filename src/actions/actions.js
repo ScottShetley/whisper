@@ -10,3 +10,9 @@ export const RemoveFromCart = id => ({
   type: "RemoveFromCart",
   id: id
 });
+
+export const CreateSecret = (title, price) => ({
+  type: "CreateSecret",
+  title: title,
+  price: price
+});
