@@ -21,7 +21,17 @@ const reducer = (state = initialstate, action) => {
     case "AddToCart":
       console.log(action.item);
       console.log(state.cart);
-      return { ...state, cart: [...state.cart, action.item] };
+      return {
+        ...state,
+        cart: [...state.cart, { ...action.item, cartId: action.cartId }]
+      };
+
+    case "RemoveFromCart":
+      return {
+        ...state,
+        cart: [...state.cart.filter(cart => cart.cartId !== action.id)]
+      };
+
     default:
       return state;
   }
