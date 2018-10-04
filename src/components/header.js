@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
@@ -20,11 +20,14 @@ const Header = props => (
           Secrets
         </NavLink>
         <NavLink activeClassName="active" className="nav-link" to="/cart">
-          Cart {props.total}
+          Cart{" "}
+          <span className="badge badge-primary">
+            {props.total > 0 ? props.total : ""}
+          </span>
         </NavLink>
       </nav>
     </div>
   </header>
 );
 
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));

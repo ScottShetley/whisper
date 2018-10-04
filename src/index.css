@@ -107,6 +107,12 @@ body {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.mainSection > div {
-  width: 800px;
+.mainSection {
+  width: 75vw;
+  max-width: 40em;
+}
+
+.badge-primary {
+  color: white;
+  background-color: #111;
 }
