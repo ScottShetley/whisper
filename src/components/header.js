@@ -1,5 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+
+const mapStateToProps = state => {
+  return {
+    total: state.cart.length
+  };
+};
 
 const Header = props => (
   <header className="masthead">
@@ -13,11 +20,11 @@ const Header = props => (
           Secrets
         </NavLink>
         <NavLink activeClassName="active" className="nav-link" to="/cart">
-          Cart
+          Cart {props.total}
         </NavLink>
       </nav>
     </div>
   </header>
 );
 
-export default Header;
+export default connect(mapStateToProps)(Header);
