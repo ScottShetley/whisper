@@ -28,13 +28,7 @@ export const reducer = (state = initialstate, action) => {
     case CREATE_SECRET:
       return {
         ...state,
-        secrets: [
-          ...state.secrets,
-          {
-            title: action.title,
-            price: action.price
-          }
-        ]
+        secrets: [...state.secrets, action.data]
       };
     case LOAD_SECRETS:
       return {

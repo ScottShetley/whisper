@@ -36,8 +36,15 @@ const Create = props => {
           onClick={() => {
             //console.log(currentTitle.value);
             //console.log(currentPrice.value);
-            props.onCreateSecret(currentTitle.value, currentPrice.value);
-            props.history.push("/secrets");
+
+            let priceCheck = parseInt(currentPrice.value);
+            if (!isNaN(priceCheck)) {
+              props.onCreateSecret(
+                currentTitle.value,
+                parseInt(currentPrice.value)
+              );
+              props.history.push("/secrets");
+            }
           }}
         >
           Create

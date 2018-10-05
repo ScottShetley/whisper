@@ -21,10 +21,17 @@ export const RemoveFromCart = id => ({
   id: id
 });
 
-export const CreateSecret = (title, price) => ({
+export const CreateSecret = (title, price) => {
+  return dispatch => {
+    return axios.post(apiUrl, { title, price }).then(response => {
+      dispatch(createsecretsuccess(response.data));
+    });
+  };
+};
+
+export const createsecretsuccess = data => ({
   type: CREATE_SECRET,
-  title: title,
-  price: price
+  data
 });
 
 export const FetchSecrets = () => {
