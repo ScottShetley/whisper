@@ -1,8 +1,12 @@
-import { secrets } from "../components/secretslist";
-import { ADD_TO_CART, REMOVE_FROM_CART, CREATE_SECRET } from "../actions/types";
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  CREATE_SECRET,
+  LOAD_SECRETS
+} from "../actions/types";
 
 const initialstate = {
-  secrets: secrets,
+  secrets: [],
   cart: []
 };
 
@@ -31,6 +35,11 @@ export const reducer = (state = initialstate, action) => {
             price: action.price
           }
         ]
+      };
+    case LOAD_SECRETS:
+      return {
+        ...state,
+        secrets: action.secrets
       };
     default:
       return state;

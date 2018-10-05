@@ -5,10 +5,14 @@ import "./index.css";
 import { Home, Create, Shop, Cart, Header } from "./components";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { reducer } from "./reducers/reducer";
+import thunk from "redux-thunk";
+import { FetchSecrets } from "./actions/actions";
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
+
+store.dispatch(FetchSecrets());
 
 const App = props => (
   <Provider store={store}>
